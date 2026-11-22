@@ -1,6 +1,6 @@
 {
   "name": "docusaurus-plugin-hads",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Docusaurus plugin for HADS ad slots: loads hads.js and places a slot after doc content, no swizzling.",
   "license": "MIT",
   "main": "lib/index.js",
