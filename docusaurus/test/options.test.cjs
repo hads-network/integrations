@@ -1,0 +1,13 @@
+const assert = require("assert");
+const plugin = require("../lib/index.js").default;
+const { validateOptions } = require("../lib/index.js");
+assert.throws(() => plugin({}, {}), /siteKey/);
+assert.throws(() => validateOptions({ options: { siteKey: "k", docAfter: { type: "banner" } } }), /docAfter.type/);
+const p = plugin({}, { siteKey: "KEY", baseUrl: "https://self.example/" });
+const tags = p.injectHtmlTags();
+assert.deepStrictEqual(tags.headTags[0].attributes, { src: "https://self.example/v1/hads.js?site=KEY", async: true });
+let data;
+p.contentLoaded({ actions: { setGlobalData: (d) => (data = d) } });
+assert.deepStrictEqual(data.docAfter, { type: "inline" });
+assert.strictEqual(data.tocAfter, false);
+console.log("options: validation, script tag and defaults ok");

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "hads/slot",
+  "title": "HADS slot",
+  "category": "widgets",
+  "icon": "megaphone",
+  "description": "A HADS ad slot. hads.js fills it on the front end.",
+  "keywords": ["ad", "hads", "sponsor"],
+  "textdomain": "hads",
+  "attributes": {
+    "type": { "type": "string", "enum": ["inline", "card", "row", "teaser", "rail"], "default": "inline" },
+    "topic": { "type": "string", "default": "" },
+    "allowSelf": { "type": "boolean", "default": false }
+  },
+  "supports": { "html": false, "className": true },
+  "editorScript": "file:./index.js"
+}

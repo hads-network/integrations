@@ -1,0 +1,7 @@
+name = "HADS"
+license = "MIT"
+licenselink = "https://github.com/hads-network/integrations/blob/main/hugo/LICENSE"
+description = "Theme component for HADS ad slots: hads/script.html and hads/slot.html partials plus a {{< hads >}} shortcode."
+homepage = "https://hads.dev"
+tags = ["ads", "component"]
+min_version = "0.120.0"

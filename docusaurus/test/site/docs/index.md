@@ -1,0 +1,8 @@
+---
+slug: /
+---
+# Home
+
+## Section
+
+Text.

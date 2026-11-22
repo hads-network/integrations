@@ -1,0 +1,5 @@
+# HADS theme component. Import as a Hugo module or a theme; configure via
+# [params.hads] in your site config. See README.md.
+[module]
+  [module.hugoVersion]
+    min = "0.120.0"

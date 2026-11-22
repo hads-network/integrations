@@ -1,0 +1,1 @@
+{ "private": true, "name": "hads-next-example", "scripts": { "build": "next build" } }

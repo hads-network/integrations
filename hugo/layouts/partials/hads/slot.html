@@ -1,0 +1,54 @@
+{{- /*
+  A HADS ad slot. Markup matches the HTML snippets on hads.dev/docs.
+    {{ partial "hads/slot.html" "card" }}
+    {{ partial "hads/slot.html" (dict "type" "inline" "topic" "go" "allowSelf" true "class" "my-ad") }}
+  Options: type (inline|card|row|teaser|rail, default inline), topic,
+  allowSelf, attribution (default params.hads.attribution or "Ads by HADS"),
+  skeleton (default true), class (extra classes).
+*/ -}}
+{{- $o := dict -}}
+{{- if eq (printf "%T" .) "string" -}}
+  {{- $o = dict "type" . -}}
+{{- else if reflect.IsMap . -}}
+  {{- $o = . -}}
+{{- end -}}
+{{- $cfg := site.Params.hads | default dict -}}
+{{- $type := $o.type | default "inline" -}}
+{{- if not (in (slice "inline" "card" "row" "teaser" "rail") $type) -}}
+  {{- errorf "hads/slot.html: unknown slot type %q" $type -}}
+{{- end -}}
+{{- $attribution := $o.attribution | default $cfg.attribution | default "Ads by HADS" -}}
+{{- $skeleton := ne $o.skeleton false -}}
+{{- $class := printf "hads-unit hads-unit--%s" $type -}}
+{{- with $o.class }}{{ $class = printf "%s %s" $class . }}{{ end -}}
+{{- $title := "" -}}
+{{- $text := "" -}}
+{{- if $skeleton -}}
+  {{- $title = `<span class="hads-unit-skeleton hads-unit-skeleton--title" aria-hidden="true"></span>` | safeHTML -}}
+  {{- $text = `<span class="hads-unit-skeleton hads-unit-skeleton--text" aria-hidden="true"></span>
+    <span class="hads-unit-skeleton hads-unit-skeleton--text hads-unit-skeleton--text-short" aria-hidden="true"></span>` | safeHTML -}}
+{{- end -}}
+<aside data-hads-slot="{{ $type }}" class="{{ $class }}"{{ with $o.topic }} data-hads-topic="{{ . }}"{{ end }}{{ if $o.allowSelf }} data-hads-allow-self{{ end }}>
+{{- if eq $type "row" }}
+  <img data-hads-image alt="" />
+  <div class="hads-unit-body">
+    <a data-hads-attribution class="hads-unit-attribution">{{ $attribution }}</a>
+    <strong data-hads-title>{{ $title }}</strong>
+    <p data-hads-text>{{ $text }}</p>
+    <a data-hads-url></a>
+  </div>
+{{- else if eq $type "teaser" }}
+  <a data-hads-attribution class="hads-unit-attribution">{{ $attribution }}</a>
+  <a data-hads-url><strong data-hads-title>{{ $title }}</strong></a>
+  <p data-hads-text>{{ $text }}</p>
+{{- else }}
+  <a data-hads-attribution class="hads-unit-attribution">{{ $attribution }}</a>
+  {{- if eq $type "card" }}
+  <img data-hads-image alt="" />
+  {{- end }}
+  <strong data-hads-title>{{ $title }}</strong>
+  <p data-hads-text>{{ $text }}</p>
+  <a data-hads-url></a>
+{{- end }}
+</aside>
+{{- /* trim */ -}}

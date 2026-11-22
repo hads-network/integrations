@@ -1,0 +1,17 @@
+{{- /*
+  Loads hads.js. Put in <head>:  {{ partial "hads/script.html" . }}
+  Config (site config):
+    [params.hads]
+      siteKey = "YOUR_SITE_KEY"         # required
+      baseUrl = "https://api.hads.dev"  # optional
+      enabled = true                    # optional, false skips the script
+*/ -}}
+{{- $cfg := site.Params.hads | default dict -}}
+{{- $key := $cfg.siteKey | default "" -}}
+{{- $base := strings.TrimRight "/" ($cfg.baseUrl | default "https://api.hads.dev") -}}
+{{- if eq (printf "%v" $cfg.enabled) "false" -}}
+{{- else if not $key -}}
+  {{- warnf "hads: params.hads.siteKey is not set; hads.js not loaded" -}}
+{{- else -}}
+<script src="{{ printf "%s/v1/hads.js?site=%s" $base (urlquery $key) | safeURL }}" async></script>
+{{- end -}}

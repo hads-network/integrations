@@ -1,0 +1,11 @@
+node_modules/
+dist/
+lib/
+.docusaurus/
+build/
+.vitepress/cache/
+.vitepress/dist/
+public/
+resources/
+.hugo_build.lock
+*.tgz

@@ -1,0 +1,9 @@
+baseURL = "https://example.test/"
+title = "HADS Hugo example"
+theme = "hugo"
+themesDir = "../.."
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
+
+[params.hads]
+  siteKey = "EXAMPLE_KEY"
+  # baseUrl = "https://api.hads.dev"

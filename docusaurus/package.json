@@ -1,0 +1,53 @@
+{
+  "name": "docusaurus-plugin-hads",
+  "version": "0.1.0",
+  "description": "Docusaurus plugin for HADS ad slots: loads hads.js and places a slot after doc content, no swizzling.",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src",
+    "theme-hads.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "docusaurus",
+    "docusaurus-plugin",
+    "hads",
+    "ads"
+  ],
+  "homepage": "https://hads.dev/docs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node test/options.test.cjs && cd test/site && docusaurus build && node ../check.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@docusaurus/core": "^3.0.0",
+    "@docusaurus/theme-classic": "^3.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/core": "^3.10.0",
+    "@docusaurus/module-type-aliases": "^3.10.0",
+    "@docusaurus/preset-classic": "^3.10.0",
+    "@docusaurus/theme-classic": "^3.10.0",
+    "@docusaurus/types": "^3.10.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.0.0",
+    "parse5": "^7.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hads-network/integrations.git",
+    "directory": "docusaurus"
+  },
+  "bugs": {
+    "url": "https://github.com/hads-network/integrations/issues"
+  }
+}

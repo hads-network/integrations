@@ -1,0 +1,13 @@
+---
+// Loads hads.js. Put it in <head>; with Astro's <ClientRouter /> the script
+// then stays loaded across navigations and fills slots on each new page.
+export interface Props {
+  /** Your HADS site key. */
+  siteKey: string;
+  /** API origin. Default https://api.hads.dev */
+  baseUrl?: string;
+}
+const { siteKey, baseUrl = "https://api.hads.dev" } = Astro.props;
+const src = `${String(baseUrl).replace(/\/+$/, "")}/v1/hads.js?site=${encodeURIComponent(siteKey)}`;
+---
+<script is:inline async src={src}></script>

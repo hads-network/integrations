@@ -1,0 +1,55 @@
+{
+  "name": "vitepress-plugin-hads",
+  "version": "0.1.0",
+  "description": "VitePress theme enhancement for HADS ad slots (doc-after / aside-outline-after).",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "default": "./dist/theme.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "vitepress",
+    "vitepress-plugin",
+    "hads",
+    "ads"
+  ],
+  "homepage": "https://hads.dev/docs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node test/site.test.mjs && node test/spa.test.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "vitepress": "^1.0.0 || ^2.0.0-0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "parse5": "^7.3.0",
+    "typescript": "^5.9.0",
+    "vitepress": "^1.6.0",
+    "vue": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hads-network/integrations.git",
+    "directory": "vitepress"
+  },
+  "bugs": {
+    "url": "https://github.com/hads-network/integrations/issues"
+  }
+}

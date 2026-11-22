@@ -1,0 +1,8 @@
+{{- /* {{< hads type="inline" topic="go" >}} in Markdown content. */ -}}
+{{- $o := dict "type" (.Get "type" | default "inline") -}}
+{{- with .Get "topic" }}{{ $o = merge $o (dict "topic" .) }}{{ end -}}
+{{- with .Get "attribution" }}{{ $o = merge $o (dict "attribution" .) }}{{ end -}}
+{{- with .Get "class" }}{{ $o = merge $o (dict "class" .) }}{{ end -}}
+{{- if in (slice "true" true) (.Get "allowSelf") }}{{ $o = merge $o (dict "allowSelf" true) }}{{ end -}}
+{{- if in (slice "false" false) (.Get "skeleton") }}{{ $o = merge $o (dict "skeleton" false) }}{{ end -}}
+{{- partial "hads/slot.html" $o -}}

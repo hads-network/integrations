@@ -1,0 +1,50 @@
+{
+  "name": "hads-astro",
+  "version": "0.1.0",
+  "description": "Astro components for HADS ad slots.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./HadsScript.astro": "./src/HadsScript.astro",
+    "./HadsSlot.astro": "./src/HadsSlot.astro"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "astro-component",
+    "withastro",
+    "hads",
+    "ads"
+  ],
+  "homepage": "https://hads.dev/docs",
+  "scripts": {
+    "check": "astro check --root .",
+    "test": "astro check --root . && cd test/site && astro build && node ../check.mjs"
+  },
+  "peerDependencies": {
+    "astro": ">=4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "astro": "^7.4.0",
+    "typescript": "^6.0.3",
+    "parse5": "^7.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hads-network/integrations.git",
+    "directory": "astro"
+  },
+  "bugs": {
+    "url": "https://github.com/hads-network/integrations/issues"
+  }
+}

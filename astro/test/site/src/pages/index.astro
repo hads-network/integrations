@@ -1,0 +1,12 @@
+---
+import { HadsScript, HadsSlot } from "hads-astro";
+const types = ["inline", "card", "row", "teaser", "rail"] as const;
+---
+<html lang="en">
+  <head><HadsScript siteKey="EXAMPLE_KEY" /></head>
+  <body>
+    {types.map((t) => <section data-case={t}><HadsSlot type={t} /></section>)}
+    <section data-case="card-topic"><HadsSlot type="card" topic="rust" allowSelf /></section>
+    <section data-case="custom"><HadsScript siteKey="K2" baseUrl="https://self.example/" /><HadsSlot attribution="<Sponsored>" class="mine" /></section>
+  </body>
+</html>

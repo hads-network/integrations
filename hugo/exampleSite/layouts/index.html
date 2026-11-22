@@ -1,0 +1,6 @@
+{{ define "main" }}
+{{ range slice "inline" "card" "row" "teaser" "rail" }}<section data-case="{{ . }}">{{ partial "hads/slot.html" . }}</section>
+{{ end }}
+<section data-case="card-topic">{{ partial "hads/slot.html" (dict "type" "card" "topic" "go" "allowSelf" true) }}</section>
+<section data-case="custom">{{ partial "hads/slot.html" (dict "attribution" "<Sponsored>" "class" "mine") }}</section>
+{{ end }}

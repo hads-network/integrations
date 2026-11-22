@@ -1,0 +1,13 @@
+{
+  "name": "hads-wordpress-dev",
+  "private": true,
+  "type": "module",
+  "description": "Dev-only checks for the WordPress plugin in ./hads (not shipped).",
+  "scripts": {
+    "parse": "node test/parse.mjs",
+    "test": "node test/parse.mjs && node test/check.mjs"
+  },
+  "devDependencies": {
+    "php-parser": "^3.2.0"
+  }
+}

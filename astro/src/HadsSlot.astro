@@ -1,0 +1,61 @@
+---
+// A HADS ad slot. Markup matches the HTML snippets on hads.dev/docs;
+// hads.js fills the data-hads-* hooks and keeps your classes and styles.
+export type HadsSlotType = "inline" | "card" | "row" | "teaser" | "rail";
+export interface Props {
+  type?: HadsSlotType;
+  /** Optional topical hint (data-hads-topic). */
+  topic?: string;
+  /** Allow ads from your other sites (data-hads-allow-self). */
+  allowSelf?: boolean;
+  /** Attribution link text. Default "Ads by HADS". */
+  attribution?: string;
+  /** Render skeleton placeholders. Default true. */
+  skeleton?: boolean;
+  /** Extra classes appended to `hads-unit hads-unit--{type}`. */
+  class?: string;
+}
+const {
+  type = "inline",
+  topic,
+  allowSelf = false,
+  attribution = "Ads by HADS",
+  skeleton = true,
+  class: extraClass,
+} = Astro.props;
+const TYPES = ["inline", "card", "row", "teaser", "rail"];
+if (!TYPES.includes(type)) throw new Error(`HadsSlot: unknown type "${type}"`);
+const hasImage = type === "card" || type === "row";
+---
+<aside
+  data-hads-slot={type}
+  class:list={["hads-unit", `hads-unit--${type}`, extraClass]}
+  data-hads-topic={topic || undefined}
+  data-hads-allow-self={allowSelf ? "" : undefined}
+>
+  {type === "row" ? (
+    <>
+      <img data-hads-image alt="" />
+      <div class="hads-unit-body">
+        <a data-hads-attribution class="hads-unit-attribution">{attribution}</a>
+        <strong data-hads-title>{skeleton && <span class="hads-unit-skeleton hads-unit-skeleton--title" aria-hidden="true"></span>}</strong>
+        <p data-hads-text>{skeleton && <><span class="hads-unit-skeleton hads-unit-skeleton--text" aria-hidden="true"></span><span class="hads-unit-skeleton hads-unit-skeleton--text hads-unit-skeleton--text-short" aria-hidden="true"></span></>}</p>
+        <a data-hads-url></a>
+      </div>
+    </>
+  ) : type === "teaser" ? (
+    <>
+      <a data-hads-attribution class="hads-unit-attribution">{attribution}</a>
+      <a data-hads-url><strong data-hads-title>{skeleton && <span class="hads-unit-skeleton hads-unit-skeleton--title" aria-hidden="true"></span>}</strong></a>
+      <p data-hads-text>{skeleton && <><span class="hads-unit-skeleton hads-unit-skeleton--text" aria-hidden="true"></span><span class="hads-unit-skeleton hads-unit-skeleton--text hads-unit-skeleton--text-short" aria-hidden="true"></span></>}</p>
+    </>
+  ) : (
+    <>
+      <a data-hads-attribution class="hads-unit-attribution">{attribution}</a>
+      {hasImage && <img data-hads-image alt="" />}
+      <strong data-hads-title>{skeleton && <span class="hads-unit-skeleton hads-unit-skeleton--title" aria-hidden="true"></span>}</strong>
+      <p data-hads-text>{skeleton && <><span class="hads-unit-skeleton hads-unit-skeleton--text" aria-hidden="true"></span><span class="hads-unit-skeleton hads-unit-skeleton--text hads-unit-skeleton--text-short" aria-hidden="true"></span></>}</p>
+      <a data-hads-url></a>
+    </>
+  )}
+</aside>
