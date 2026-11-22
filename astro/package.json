@@ -28,7 +28,7 @@
   "homepage": "https://hads.dev/docs",
   "scripts": {
     "check": "astro check --root .",
-    "test": "astro check --root . && cd test/site && astro build && node ../check.mjs"
+    "test": "node ../fixtures/install-self.mjs . test/site && astro check --root . && cd test/site && astro build && node ../check.mjs"
   },
   "peerDependencies": {
     "astro": ">=4"

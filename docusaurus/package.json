@@ -21,7 +21,7 @@
   "homepage": "https://hads.dev/docs",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node test/options.test.cjs && cd test/site && docusaurus build && node ../check.mjs",
+    "test": "npm run build && node test/options.test.cjs && node ../fixtures/install-self.mjs . test/site && cd test/site && docusaurus build && node ../check.mjs",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
