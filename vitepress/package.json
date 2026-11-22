@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-hads",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "VitePress theme enhancement for HADS ad slots (doc-after / aside-outline-after).",
   "license": "MIT",
   "type": "module",

@@ -1,6 +1,6 @@
 {
   "name": "hads-astro",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Astro components for HADS ad slots.",
   "license": "MIT",
   "type": "module",
